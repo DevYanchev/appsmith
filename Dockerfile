@@ -23,8 +23,8 @@ RUN <<END
   fi
 END
 # IVAN - addint this step manually to change the directory to the client folder.
-RUN cd app/client && yarn install && yarn build
-RUN cd app/client && chmod +x build.sh && ./build.sh
+# RUN cd app/client && yarn install && yarn build
+RUN cd app/client/packages/rts && chmod +x build.sh && ./build.sh
 
 # Add client UI - Application Layer
 COPY ./app/client/build editor/
