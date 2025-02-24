@@ -8,9 +8,6 @@ ENV APPSMITH_CLOUD_SERVICES_BASE_URL=${APPSMITH_CLOUD_SERVICES_BASE_URL}
 
 ARG APPSMITH_SEGMENT_CE_KEY
 ENV APPSMITH_SEGMENT_CE_KEY=${APPSMITH_SEGMENT_CE_KEY}
-# IVAN - addint this step manually to change the directory to the client folder.
-RUN cd app/client && yarn install && yarn build
-RUN cd app/client/packages/rts && chmod +x build.sh && ./build.sh
 
 COPY deploy/docker/fs /
 
@@ -25,7 +22,6 @@ RUN <<END
     exit 1
   fi
 END
-
 
 # Add client UI - Application Layer
 COPY ./app/client/build editor/
